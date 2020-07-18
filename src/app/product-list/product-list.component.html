@@ -1,0 +1,60 @@
+<div class='card'>
+    <div class='card-header'>
+        {{title}}
+
+    </div>
+    <div class='card-body'>
+        <div class='table-responsive'>
+            <table class='table'>
+                <thead>
+                    <tr>
+                        <th>
+                            <button class='btn btn-primary'
+                                (click)='toggleImage()'>
+                                {{showImage?'HIDE ':'SHOW '}}IMAGE
+                            </button>
+                        </th>
+                        <th>PRODUCT</th>
+                        <th>CODE</th>
+                        <th>AVAILABLE</th>
+                        <th>PRICE</th>
+                        <th>5 STAR RATING</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                
+                    <tr *ngFor='let product of products'>
+                        <td>
+                            <img *ngIf='showImage'
+                             [src]='product.ImageUrl'
+                            [title]='product.productName'
+                            [style.width.px]='imageWidth'
+                            [style.margin.px]='imageMargin'>
+                        </td>
+                        <td>{{product.productName}}</td>
+                        <td>{{product.productCode}}</td>
+                        <td>{{product.releaseDate}}</td>
+                        <td>{{product.price}}</td>
+                        <td>{{product.starRating}}</td>
+                        <td>
+                                <button type='button' class='btn btn-default btn-sm' [routerLink]="['/update/', product._id]">
+                                   Edit 
+                                </button> 
+                                <button type='button' class='btn btn-default btn-sm' (click)="deleteProduct(product._id)">
+                                    Delete 
+                                 </button>
+                        </td>
+
+
+                    </tr>
+
+
+                </tbody>
+                </table>
+
+        </div>
+
+    </div>
+
+</div>
